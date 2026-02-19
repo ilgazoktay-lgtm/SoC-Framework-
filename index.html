@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Automated Disassembly Strategic Framework</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #f5f7fa;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 6px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+input {
+  width: 60px;
+}
+
+.result {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+button {
+  padding: 10px 18px;
+  background: #0052cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #003d99;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Automated Disassembly Decision Engine</h1>
+<p>Structured 5-Pillar Weighted Framework</p>
+
+<div class="section">
+<h2>Score Metrics (1–5)</h2>
+
+<table>
+<tr>
+<th>Pillar</th>
+<th>Metric</th>
+<th>Weight</th>
+<th>Score</th>
+</tr>
+
+<!-- REGULATORY -->
+<tr><td rowspan="5">Regulatory (15%)</td><td>ESPR Priority</td><td>30%</td><td><input type="number" id="r1" value="3"></td></tr>
+<tr><td>DPP Maturity</td><td>20%</td><td><input type="number" id="r2" value="2"></td></tr>
+<tr><td>EPR Modulation</td><td>15%</td><td><input type="number" id="r3" value="3"></td></tr>
+<tr><td>Repairability Index</td><td>20%</td><td><input type="number" id="r4" value="6"></td></tr>
+<tr><td>CRM Value</td><td>15%</td><td><input type="number" id="r5" value="3"></td></tr>
+
+<!-- ECONOMIC -->
+<tr><td rowspan="5">Economic (30%)</td><td>NPV</td><td>40%</td><td><input type="number" id="e1" value="4"></td></tr>
+<tr><td>Residual Value Capture</td><td>25%</td><td><input type="number" id="e2" value="3"></td></tr>
+<tr><td>Break-Even Throughput</td><td>20%</td><td><input type="number" id="e3" value="4"></td></tr>
+<tr><td>Recovery Rate</td><td>10%</td><td><input type="number" id="e4" value="3"></td></tr>
+<tr><td>Market Liquidity</td><td>5%</td><td><input type="number" id="e5" value="3"></td></tr>
+
+<!-- TECHNICAL -->
+<tr><td rowspan="5">Technical (25%)</td><td>Product Complexity</td><td>30%</td><td><input type="number" id="t1" value="3"></td></tr>
+<tr><td>Component Composition</td><td>20%</td><td><input type="number" id="t2" value="3"></td></tr>
+<tr><td>Safe Handling</td><td>20%</td><td><input type="number" id="t3" value="4"></td></tr>
+<tr><td>Component Purity</td><td>15%</td><td><input type="number" id="t4" value="3"></td></tr>
+<tr><td>Data & Instructions</td><td>15%</td><td><input type="number" id="t5" value="3"></td></tr>
+
+<!-- TIME -->
+<tr><td rowspan="4">Time Horizon (15%)</td><td>Market Return Volume</td><td>35%</td><td><input type="number" id="th1" value="4"></td></tr>
+<tr><td>Tech Replacement Risk</td><td>30%</td><td><input type="number" id="th2" value="3"></td></tr>
+<tr><td>Flow Stability</td><td>20%</td><td><input type="number" id="th3" value="4"></td></tr>
+<tr><td>Product Variety</td><td>15%</td><td><input type="number" id="th4" value="3"></td></tr>
+
+<!-- SUSTAINABILITY -->
+<tr><td rowspan="4">Sustainability (15%)</td><td>CROI</td><td>40%</td><td><input type="number" id="s1" value="4"></td></tr>
+<tr><td>EBR</td><td>25%</td><td><input type="number" id="s2" value="3"></td></tr>
+<tr><td>Purity Grade</td><td>20%</td><td><input type="number" id="s3" value="3"></td></tr>
+<tr><td>LCA</td><td>15%</td><td><input type="number" id="s4" value="4"></td></tr>
+
+</table>
+
+<br>
+<button onclick="calculate()">Calculate Final Score</button>
+</div>
+
+<div class="section">
+<h2>Results</h2>
+<p>Regulatory Score: <span id="regScore"></span></p>
+<p>Economic Score: <span id="econScore"></span></p>
+<p>Technical Score: <span id="techScore"></span></p>
+<p>Time Horizon Score: <span id="timeScore"></span></p>
+<p>Sustainability Score: <span id="susScore"></span></p>
+
+<hr>
+<p class="result">FINAL STRATEGIC ATTRACTIVENESS SCORE: <span id="finalScore"></span></p>
+</div>
+
+<script>
+function weightedScore(ids, weights) {
+  let total = 0;
+  for (let i = 0; i < ids.length; i++) {
+    let val = parseFloat(document.getElementById(ids[i]).value);
+    total += val * weights[i];
+  }
+  return total;
+}
+
+function calculate() {
+
+  // Regulatory
+  let reg = weightedScore(
+    ["r1","r2","r3","r4","r5"],
+    [0.30,0.20,0.15,0.20,0.15]
+  );
+
+  // Economic
+  let econ = weightedScore(
+    ["e1","e2","e3","e4","e5"],
+    [0.40,0.25,0.20,0.10,0.05]
+  );
+
+  // Technical
+  let tech = weightedScore(
+    ["t1","t2","t3","t4","t5"],
+    [0.30,0.20,0.20,0.15,0.15]
+  );
+
+  // Time
+  let time = weightedScore(
+    ["th1","th2","th3","th4"],
+    [0.35,0.30,0.20,0.15]
+  );
+
+  // Sustainability
+  let sus = weightedScore(
+    ["s1","s2","s3","s4"],
+    [0.40,0.25,0.20,0.15]
+  );
+
+  // Apply Pillar Weights
+  let final =
+    reg*0.15 +
+    econ*0.30 +
+    tech*0.25 +
+    time*0.15 +
+    sus*0.15;
+
+  document.getElementById("regScore").innerText = reg.toFixed(2);
+  document.getElementById("econScore").innerText = econ.toFixed(2);
+  document.getElementById("techScore").innerText = tech.toFixed(2);
+  document.getElementById("timeScore").innerText = time.toFixed(2);
+  document.getElementById("susScore").innerText = sus.toFixed(2);
+  document.getElementById("finalScore").innerText = final.toFixed(2);
+}
+</script>
+
+</body>
+</html>
