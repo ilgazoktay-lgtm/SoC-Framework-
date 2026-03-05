@@ -69,7 +69,6 @@
 
 <body>
   <h1>Automated Disassembly Decision Engine</h1>
-  <p class="sub">1–5 skorlar: seçmeli şık + metrik bazlı açıklamalar</p>
 
   <div class="section">
     <h2>1) Base Model Inputs (Scores 1–5)</h2>
@@ -120,7 +119,7 @@
 
     <div class="note">
       Base Model pillar weights: Technical 0.35, Economic 0.25, Time 0.20, Regulatory 0.10, Sustainability 0.10.
-      <br/>Not: Break-Even Throughput (Economic) TRI hesabında da kullanılır.
+      <br/> Note: Break-Even Throughput (Economic) is also used in TRI calculation.
     </div>
 
     <br />
@@ -138,7 +137,6 @@
           <tr>
             <td class="left">
               Return Volume Score
-              <div class="muted">Break-Even Throughput otomatik olarak Base Model → Economic → Break-Even Throughput (e3) skorundan alınır.</div>
             </td>
             <td><input type="number" id="returnVolumeScore" min="0" step="0.01" value="5" oninput="calculate()"></td>
           </tr>
@@ -161,7 +159,7 @@
           <tr><td class="left">Value Volatility Index</td><td><input type="number" id="vvi" min="0" step="0.01" value="1.00" oninput="calculate()"></td></tr>
         </table>
         <div class="note">
-          VDT = Recovered Unit Value / eDiM (normalizasyon yok). Final Score = Base Model Result × VDT × AMG × HCI × VVI.
+          VDT = Recovered Unit Value / eDiM. Final Score = Base Model Result × VDT × AMG × HCI × VVI.
         </div>
       </div>
     </div>
